@@ -7,82 +7,19 @@
             </div>
             <div id="allCats">
                 <ul>
-                    <li class="parentLi">دست1 <arrow></arrow>
+                    <li class="parentLi" v-for='(c,i) in mainCats' :key="i"><p class="titleParagraph">{{c.title}}</p> <arrow></arrow>
                         <div class="subMenu">
                             <div class="subTitleWrapper">
                                 <div class="SubTitle"><p>دسته 1</p></div>
                                 <ul>
-                                    <li><a href="#">زیردسته 1</a></li>
-                                    <li><a href="#">زیردسته 2</a></li>
-                                    <li><a href="#">زیردسته 3</a></li>
-                                    <li><a href="#">زیردسته4</a></li>
-                                    <li><a href="#">زیردسته 5</a></li>
-                                    <li><a href="#">مشاهده همه</a></li>
+                                    <template v-for="(s,ind) in c.subs"> 
+                                        <li v-if="ind<5"><a href="#">{{s.title}}</a></li>
+                                        <li v-if="ind==5"><a href="#">مشاهده همه</a></li>
+                                    </template>
                                 </ul>
                             </div>
                         </div>
-                    </li>
-                    <li class="parentLi">دست1 <arrow></arrow>
-                    <div class="subMenu">
-                            <div class="subTitleWrapper">
-                                <div class="SubTitle"><p>دسته 1</p></div>
-                                <ul>
-                                    <li><a href="#">زیردسته 1</a></li>
-                                    <li><a href="#">زیردسته 2</a></li>
-                                    <li><a href="#">زیردسته 3</a></li>
-                                    <li><a href="#">زیردسته4</a></li>
-                                    <li><a href="#">زیردسته 5</a></li>
-                                    <li><a href="#">مشاهده همه</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="parentLi">دست1 <arrow></arrow>
-                    <div class="subMenu">
-                            <div class="subTitleWrapper">
-                                <div class="SubTitle"><p>دسته 1</p></div>
-                                <ul>
-                                    <li><a href="#">زیردسته 1</a></li>
-                                    <li><a href="#">زیردسته 2</a></li>
-                                    <li><a href="#">زیردسته 3</a></li>
-                                    <li><a href="#">زیردسته4</a></li>
-                                    <li><a href="#">زیردسته 5</a></li>
-                                    <li><a href="#">مشاهده همه</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="parentLi">دست1 <arrow></arrow>
-                    <div class="subMenu">
-                            <div class="subTitleWrapper">
-                                <div class="SubTitle"><p>دسته 1</p></div>
-                                <ul>
-                                    <li><a href="#">زیردسته 1</a></li>
-                                    <li><a href="#">زیردسته 2</a></li>
-                                    <li><a href="#">زیردسته 3</a></li>
-                                    <li><a href="#">زیردسته4</a></li>
-                                    <li><a href="#">زیردسته 5</a></li>
-                                    <li><a href="#">مشاهده همه</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="parentLi">دست1 <arrow></arrow>
-                    <div class="subMenu">
-                            <div class="subTitleWrapper">
-                                <div class="SubTitle"><p>دسته 1</p></div>
-                                <ul>
-                                    <li><a href="#">زیردسته 1</a></li>
-                                    <li><a href="#">زیردسته 2</a></li>
-                                    <li><a href="#">زیردسته 3</a></li>
-                                    <li><a href="#">زیردسته4</a></li>
-                                    <li><a href="#">زیردسته 5</a></li>
-                                    <li><a href="#">مشاهده همه</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </li>
-                    
+                    </li>                    
                 </ul>
             </div>
         </div>
@@ -93,6 +30,10 @@
     import arrow from "../../template/arrow/arrow.vue"
     import ham from "../../template/hamIcon/ham.vue"
     export default{
+        props:['categories','mainCats'],
+        created(){
+            console.log(this.mainCats)
+        },
         components:{
             ham,
             arrow
@@ -172,6 +113,9 @@
     #hamCats{
         display:flex;
         align-items:center
+    }
+    .titleParagraph{
+        font-size:14pt
     }
     @media (max-width:801px)
 	{
