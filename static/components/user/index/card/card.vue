@@ -4,15 +4,15 @@
 		<div @click='goToLeft()' class="left"><img src="/images/left.png" alt=""></div>
 		<div @mousemove="mouseMove($event)" @mouseup="mouseup($event)" @mouseleave="mouseleave($event)" @mousedown="mouseDown($event)" class="cardWrapper">
 			
-				<div class="cardItem" :id='index' v-for='(p,index) in JSON.parse(products)' :key='index'>
+				<div class="cardItem" :id='index' v-for='(p,index) in getProducts' :key='index'>
 					<div class="productImage">
-						<img :src="getUrl(p)" alt="">
+						<img :src="p.product_image" alt="">
 					</div>
 					<div class="productTitle">
-						<a href="#"><p>خط تولید مشاین لباسش شویی تمم اتومات</p></a>
+						<a href="#"><p>{{p.title}}</p></a>
 					</div>
 					<div class="productDesc">
-						<p>{{getDesc(p.desc)}}</p>
+						<p>{{getDesc(p.description)}}</p>
 					</div>
 					<div class="productContinue">
 						<a href="#"><button class=continue>ادامه مطلب</button></a>
@@ -36,14 +36,20 @@
 		},
 		mounted(){
 			this.container=document.querySelector('.cardWrapper')
+			console.log('from card',this.products)
+		},
+		computed:{
+			getProducts(){
+
+				return this.products
+			}
 		},
         methods:{
             getUrl(p){
                 return p.url
             },
             getDesc(desc){
-                console.log(desc.substring(0,30).length)
-                return desc.length>30 ? desc.substring(0,100)+"..." : desc
+                return desc.length>75 ? desc.substring(0,75)+"..." : desc
 			},
 			mouseDown(e){
 				this.isDown=true
@@ -169,13 +175,14 @@
 	}
 	.productDesc{
 		width: 250px;
-		min-height: 100px;
+		height: 100px;
 		margin-top:5px;
 		
 	}
 	.productTitle{
 		width: 250px;
 		margin-top:5px;
+		height:50px;
 	}
 	.productTitle p{
 		color:rgb(34, 105, 122)

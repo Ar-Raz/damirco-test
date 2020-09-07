@@ -2,7 +2,7 @@
 	<div id="index" class='mainItemPerPage'>
 		<div id="topOfIndex">
 			<div id="topOfIndexWrapper">
-				<categorie></categorie>
+				<categorie :categories="JSON.parse(categories)" :mainCats="JSON.parse(main_categories)"></categorie>
 				<slider></slider>	
 				
 			</div>			
@@ -137,14 +137,19 @@
 			extraSignUp,
 			expandingCard
 		},
+		props:['products','categories','main_categories'],
+		created(){
+			console.log(JSON.parse(this.categories))
+			console.log(JSON.parse(this.main_categories))			
+		},
 		data(){
 			return{
-				products:[{desc:'محصل فلانئ ئنیسئب ئنئ ثنصئب نئنئ ئن ئنئنئنئنئنئنئنئنئنئنئن و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"}]
+				//products:[{desc:'محصل فلانئ ئنیسئب ئنئ ثنصئب نئنئ ئن ئنئنئنئنئنئنئنئنئنئنئن و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"},{desc:'محصل فلان و فلان وفلان',url:"/images/a.jpg"}]
 			}
 		},
 		methods:{
 			getProducts(){
-				return JSON.stringify(this.products)
+				return JSON.parse(this.products)
 			}
 		}
 		

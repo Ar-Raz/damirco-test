@@ -9,7 +9,7 @@
 
 						<li><a href="/accounts/login">ورود</a></li>
 						<li><a href="/accounts/signup">ثبت نام</a></li>
-						<li><a href="/users/profi">پنل کاربری</a></li>
+						<li><a href="/users/profile">پنل کاربری</a></li>
 
 					</ul>
 				</div>
